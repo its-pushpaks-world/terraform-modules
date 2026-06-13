@@ -131,8 +131,8 @@ module "network" {
 
 **Pushpak Badadale**
 
-📧 Email: [itspushpaksworld496@gmail.com](mailto:itspushpaksworld496@gmail.com)
+📧 [Email](mailto:itspushpaksworld496@gmail.com)
 
-💼 LinkedIn: https://linkedin.com/in/your-linkedin-profile
+💼 [LinkedIn](https://www.linkedin.com/in/pushpak-badadale-492409179)
 
-🐙 GitHub: https://github.com/its-pushpaks-world
+🐙 [GitHub](https://github.com/its-pushpaks-world)
