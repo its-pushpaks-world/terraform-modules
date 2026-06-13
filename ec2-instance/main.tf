@@ -5,7 +5,10 @@ variable "instance_type" {
   type = string
   default = "t2.micro"
 } # standard free tier
-variable "user_data" { type = string; default = "" }
+variable "user_data" { 
+  type = string
+  default = ""
+}
 
 resource "aws_security_group" "instance_sg" {
   name   = "${var.instance_name}-sg"
