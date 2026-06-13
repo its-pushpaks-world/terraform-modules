@@ -1,86 +1,112 @@
-# Terraform Modules
+# 🏗️ Terraform Modules for AWS Infrastructure
 
-Reusable Terraform modules for provisioning AWS infrastructure components used by the Observability Platform project.
+Reusable Terraform modules designed to standardize AWS infrastructure provisioning across projects.
 
-## Overview
-
-This repository contains modular Terraform code that follows Infrastructure as Code (IaC) principles and can be consumed by multiple deployment projects.
-
-The modules provide reusable building blocks for:
-
-* AWS VPC
-* Public Subnet
-* Internet Gateway
-* Route Tables
-* EC2 Instances
-* Security Groups
-
-## Repository Structure
-
-```text
-terraform-modules/
-├── vpc/
-│   └── main.tf
-│
-└── ec2-instance/
-    └── main.tf
-```
-
-## Available Modules
-
-### VPC Module
-
-Creates:
-
-* VPC
-* Public Subnet
-* Internet Gateway
-* Route Table
-* Route Table Association
-
-#### Inputs
-
-| Variable    | Description        |
-| ----------- | ------------------ |
-| vpc_cidr    | VPC CIDR Block     |
-| subnet_cidr | Public Subnet CIDR |
-| az          | Availability Zone  |
-
-#### Outputs
-
-| Output    | Description |
-| --------- | ----------- |
-| vpc_id    | VPC ID      |
-| subnet_id | Subnet ID   |
+This repository serves as the foundational Infrastructure as Code (IaC) layer for the Observability Platform project and provides reusable AWS networking and compute modules.
 
 ---
 
-### EC2 Module
+## 🚀 Features
+
+✅ Modular Terraform Design
+
+✅ Reusable AWS Infrastructure Components
+
+✅ Standardized Networking Configuration
+
+✅ EC2 Provisioning Support
+
+✅ User Data Bootstrapping
+
+✅ Easy Integration Across Projects
+
+---
+
+## 🏛️ Repository Role
+
+This repository is consumed by:
+
+```text
+terraform-modules
+        │
+        ▼
+observability-infra-proj
+        │
+        ▼
+AWS Infrastructure
+        │
+        ▼
+gitops-observability-apps
+```
+
+---
+
+## 🛠️ Technologies Used
+
+- Terraform
+- AWS EC2
+- AWS VPC
+- AWS Security Groups
+- GitHub
+
+---
+
+## 📂 Available Modules
+
+### 🌐 Network Module (`/vpc`)
 
 Creates:
 
-* EC2 Instance
-* Security Group
-* User Data Bootstrap Support
+- VPC
+- Public Subnet
+- Internet Gateway
+- Route Table
+- Route Table Association
 
 #### Inputs
 
-| Variable      | Description       |
-| ------------- | ----------------- |
-| instance_name | EC2 Name          |
-| vpc_id        | Target VPC        |
-| subnet_id     | Target Subnet     |
-| user_data     | Bootstrap Script  |
-| instance_type | EC2 Instance Type |
+| Variable | Description |
+|-----------|------------|
+| vpc_cidr | VPC CIDR Block |
+| subnet_cidr | Public Subnet CIDR |
+| az | Availability Zone |
 
 #### Outputs
 
-| Output     | Description |
-| ---------- | ----------- |
-| public_ip  | Public IP   |
-| private_ip | Private IP  |
+| Output | Description |
+|---------|------------|
+| vpc_id | Created VPC ID |
+| subnet_id | Created Subnet ID |
 
-## Example Usage
+---
+
+### 💻 Compute Module (`/ec2-instance`)
+
+Creates:
+
+- EC2 Instance
+- Security Group
+- User Data Bootstrap Support
+
+#### Inputs
+
+| Variable | Description |
+|-----------|------------|
+| instance_name | EC2 Name |
+| vpc_id | Target VPC |
+| subnet_id | Target Subnet |
+| user_data | Bootstrap Script |
+
+#### Outputs
+
+| Output | Description |
+|---------|------------|
+| public_ip | Public IP |
+| private_ip | Private IP |
+
+---
+
+## 📖 Usage Example
 
 ```hcl
 module "network" {
@@ -92,22 +118,21 @@ module "network" {
 }
 ```
 
-## Skills Demonstrated
+---
 
-* Terraform
-* Infrastructure as Code (IaC)
-* AWS Networking
-* AWS EC2
-* Modular Design
-* Reusable Infrastructure Components
-* Git Version Control
+## 🔗 Related Repositories
 
-## Related Repositories
+- observability-infra-proj
+- gitops-observability-apps
 
-* observability-infra-proj
-* gitops-observability-apps
+---
 
-## Author
+## 👨‍💻 Author
 
-Pushpak Badadale [itspushpaksworld496@gmail.com]
-DevOps | Cloud | Observability
+**Pushpak Badadale**
+
+📧 Email: [itspushpaksworld496@gmail.com](mailto:itspushpaksworld496@gmail.com)
+
+💼 LinkedIn: https://linkedin.com/in/your-linkedin-profile
+
+🐙 GitHub: https://github.com/its-pushpaks-world
