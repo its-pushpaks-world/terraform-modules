@@ -1,12 +1,14 @@
 variable "instance_name" { type = string }
-variable "vpc_id" { type = string }
-variable "subnet_id" { type = string }
+variable "vpc_id"        { type = string }
+variable "subnet_id"     { type = string }
+
 variable "instance_type" { 
-  type = string
+  type    = string
   default = "t2.micro"
 } # standard free tier
+
 variable "user_data" { 
-  type = string
+  type    = string
   default = ""
 }
 
@@ -14,13 +16,52 @@ resource "aws_security_group" "instance_sg" {
   name   = "${var.instance_name}-sg"
   vpc_id = var.vpc_id
 
-  ingress { from_port = 22; to_port = 22; protocol = "tcp"; cidr_blocks = ["0.0.0.0/0"] }     # SSH
-  ingress { from_port = 8080; to_port = 8080; protocol = "tcp"; cidr_blocks = ["0.0.0.0/0"] } # Tomcat
-  ingress { from_port = 3000; to_port = 3000; protocol = "tcp"; cidr_blocks = ["0.0.0.0/0"] } # Grafana
-  ingress { from_port = 9009; to_port = 9009; protocol = "tcp"; cidr_blocks = ["0.0.0.0/0"] } # Mimir
-  ingress { from_port = 3100; to_port = 3100; protocol = "tcp"; cidr_blocks = ["0.0.0.0/0"] } # Loki
+  # SSH
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }     
+
+  # Tomcat
+  ingress {
+    from_port   = 8080
+    to_port     = 8080
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  # Grafana
+  ingress {
+    from_port   = 3000
+    to_port     = 3000
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  # Mimir
+  ingress {
+    from_port   = 9009
+    to_port     = 9009
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  # Loki
+  ingress {
+    from_port   = 3100
+    to_port     = 3100
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }  
   
-  egress { from_port = 0; to_port = 0; protocol = "-1"; cidr_blocks = ["0.0.0.0/0"] }
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 }
 
 resource "aws_instance" "node" {
@@ -32,5 +73,10 @@ resource "aws_instance" "node" {
   tags                   = { Name = var.instance_name }
 }
 
-output "private_ip" { value = aws_instance.node.private_ip }
-output "public_ip"  { value = aws_instance.node.public_ip }
+output "private_ip" {
+  value = aws_instance.node.private_ip
+}
+
+output "public_ip" {
+  value = aws_instance.node.public_ip
+}
