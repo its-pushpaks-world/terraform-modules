@@ -1,7 +1,10 @@
 variable "instance_name" { type = string }
 variable "vpc_id" { type = string }
 variable "subnet_id" { type = string }
-variable "instance_type" { type = string; default = "t2.micro" } # standard free tier
+variable "instance_type" { 
+  type = string
+  default = "t2.micro"
+} # standard free tier
 variable "user_data" { type = string; default = "" }
 
 resource "aws_security_group" "instance_sg" {
