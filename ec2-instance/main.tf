@@ -4,7 +4,7 @@ variable "subnet_id"     { type = string }
 
 variable "instance_type" { 
   type    = string
-  default = "t2.micro"
+  default = "t3.micro"
 } # standard free tier
 
 variable "user_data" { 
